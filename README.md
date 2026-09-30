@@ -1,4 +1,24 @@
-# CompareFilesViewer
+# CompareFilesViewer / 文件比较结果查看器
+
+[English](#english) · [中文](#中文)
+
+## English
+
+A native macOS SwiftUI viewer for file-comparison results produced by a Shortcut or another tool. It displays relationships, version order, local metadata, text/image evidence, and Finder actions. It does not perform the comparison itself.
+
+### Build
+
+```bash
+swift build -c release
+```
+
+Pass a complete JSON payload with `--file`, `--json`, or stdin. `Compare Files.shortcut` is the companion workflow entry point.
+
+### Localization
+
+The app supports English and Simplified Chinese. Change the interface language in the standard macOS Settings window.
+
+## 中文
 
 轻量 macOS SwiftUI 结果窗口。界面使用系统 Material / SF Symbols；文件本身的图标优先直接读取 Finder/NSWorkspace 当前显示的真实文件图标。
 
