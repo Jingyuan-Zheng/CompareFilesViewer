@@ -91,14 +91,14 @@ struct ContentView: View {
 
                     textCard(
                         symbol: "text.alignleft",
-                        title: "总结",
-                        text: analysis.summary.isEmpty ? "暂无总结。" : analysis.summary
+                        title: L10n.ui("总结"),
+                        text: analysis.summary.isEmpty ? L10n.ui("暂无总结。") : analysis.summary
                     )
 
                     textCard(
                         symbol: "lightbulb",
-                        title: "建议",
-                        text: analysis.recommendation.isEmpty ? "暂无建议。" : analysis.recommendation
+                        title: L10n.ui("建议"),
+                        text: analysis.recommendation.isEmpty ? L10n.ui("暂无建议。") : analysis.recommendation
                     )
                 }
                 .padding(.horizontal, 16)
@@ -149,7 +149,7 @@ struct ContentView: View {
     private var mainFileCard: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 11) {
-                SectionTitle(symbol: "crown", title: "推荐主版本")
+                SectionTitle(symbol: "crown", title: L10n.ui("推荐主版本"))
 
                 if let name = analysis.mainFile {
                     HStack(spacing: 12) {
@@ -175,7 +175,7 @@ struct ContentView: View {
                             Button {
                                 revealInFinder(mainFileInfo)
                             } label: {
-                                Label("在访达中显示", systemImage: "folder")
+                                Label(L10n.ui("在访达中显示"), systemImage: "folder")
                             }
                             .buttonStyle(.bordered)
                         }
@@ -188,7 +188,7 @@ struct ContentView: View {
                             .foregroundStyle(.secondary)
                             .frame(width: 34)
 
-                        Text("暂无法可靠确定")
+                        Text(L10n.ui("暂无法可靠确定"))
                             .font(.system(size: 14, weight: .medium))
                             .foregroundStyle(.secondary)
 
@@ -204,7 +204,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 SectionTitle(
                     symbol: usesVersionOrder ? "clock.arrow.circlepath" : "doc.on.doc",
-                    title: usesVersionOrder ? "版本顺序（从旧到新）" : "文件"
+                    title: usesVersionOrder ? L10n.ui("版本顺序（从旧到新）") : L10n.ui("文件")
                 )
 
                 VStack(spacing: 0) {
@@ -262,7 +262,7 @@ struct ContentView: View {
             Spacer()
 
             if isMain {
-                Text("主版本")
+                Text(L10n.ui("主版本"))
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(Color.accentColor)
                     .padding(.horizontal, 8)
@@ -276,7 +276,7 @@ struct ContentView: View {
                 Button {
                     revealInFinder(info)
                 } label: {
-                    Label("在访达中显示", systemImage: "folder")
+                    Label(L10n.ui("在访达中显示"), systemImage: "folder")
                 }
             }
         }
@@ -285,7 +285,7 @@ struct ContentView: View {
     private var differencesCard: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 11) {
-                SectionTitle(symbol: "list.bullet.rectangle", title: "主要差异")
+                SectionTitle(symbol: "list.bullet.rectangle", title: L10n.ui("主要差异"))
 
                 VStack(alignment: .leading, spacing: 8) {
                     ForEach(differences, id: \.self) { difference in
@@ -323,13 +323,13 @@ struct ContentView: View {
             Button {
                 showingDetails = true
             } label: {
-                Label("查看详细信息…", systemImage: "info.circle")
+                Label(L10n.ui("查看详细信息…"), systemImage: "info.circle")
             }
             .buttonStyle(.bordered)
 
             Spacer()
 
-            Button("完成") {
+            Button(L10n.ui("完成")) {
                 NSApp.keyWindow?.performClose(nil)
             }
             .buttonStyle(.borderedProminent)

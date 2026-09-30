@@ -141,9 +141,9 @@ struct TextDifference: Codable, Identifiable, Sendable {
 
     var statusTitle: String {
         switch status {
-        case "IDENTICAL_TEXT": return "提取文本一致"
-        case "DIFFERENT_TEXT": return "提取文本不同"
-        default: return "文本不可用"
+        case "IDENTICAL_TEXT": return L10n.ui("提取文本一致")
+        case "DIFFERENT_TEXT": return L10n.ui("提取文本不同")
+        default: return L10n.ui("文本不可用")
         }
     }
 }
@@ -263,13 +263,13 @@ enum Relation: String, Codable, CaseIterable, Sendable {
 
     var title: String {
         switch self {
-        case .exact: return "完全相同"
-        case .nearDuplicate: return "近似重复"
-        case .version: return "不同版本"
-        case .sameProject: return "同一项目"
-        case .unrelated: return "完全无关"
-        case .mixed: return "混合关系"
-        case .uncertain: return "无法可靠判断"
+        case .exact: return L10n.ui("完全相同")
+        case .nearDuplicate: return L10n.ui("近似重复")
+        case .version: return L10n.ui("不同版本")
+        case .sameProject: return L10n.ui("同一项目")
+        case .unrelated: return L10n.ui("完全无关")
+        case .mixed: return L10n.ui("混合关系")
+        case .uncertain: return L10n.ui("无法可靠判断")
         }
     }
 
@@ -293,9 +293,9 @@ enum Confidence: String, Codable, CaseIterable, Sendable {
 
     var title: String {
         switch self {
-        case .high: return "高"
-        case .medium: return "中"
-        case .low: return "低"
+        case .high: return L10n.ui("高")
+        case .medium: return L10n.ui("中")
+        case .low: return L10n.ui("低")
         }
     }
 

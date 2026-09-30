@@ -25,11 +25,13 @@ struct CompareFilesViewerApp: App {
                 if let payload = store.payload {
                     ContentView(payload: payload)
                 } else {
-                    ErrorView(message: store.errorMessage ?? "没有收到可显示的数据。")
+                    ErrorView(message: store.errorMessage ?? L10n.ui("没有收到可显示的数据。"))
                 }
             }
         }
         .windowResizability(.contentSize)
         .defaultPosition(.center)
+
+        Settings { SettingsView() }
     }
 }

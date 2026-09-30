@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "CompareFilesViewer",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v14)
     ],
@@ -12,7 +13,8 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "CompareFilesViewer",
-            path: "Sources/CompareFilesViewer"
+            path: "Sources/CompareFilesViewer",
+            resources: [.process("Resources")]
         )
     ]
 )

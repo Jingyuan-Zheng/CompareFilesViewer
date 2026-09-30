@@ -15,7 +15,7 @@ struct ErrorView: View {
                     .symbolRenderingMode(.hierarchical)
                     .foregroundStyle(.orange)
 
-                Text("无法显示比较结果")
+                Text(L10n.ui("无法显示比较结果"))
                     .font(.system(size: 20, weight: .bold))
 
                 Text(message)
@@ -24,7 +24,7 @@ struct ErrorView: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 360)
 
-                Button("关闭") {
+                Button(L10n.ui("关闭")) {
                     NSApp.keyWindow?.performClose(nil)
                 }
                 .buttonStyle(.borderedProminent)
