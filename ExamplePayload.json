@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "name": "report.pdf",
+      "path": "/Users/example/Downloads/report.pdf",
+      "size": 2101284,
+      "created": "2026-08-10 14:22",
+      "modified": "2026-08-10 14:22",
+      "extension": "pdf",
+      "sha256": "0d6d8f6c2b9f...",
+      "text_sha256": "7d1acb34c82e...",
+      "normalized_family": "report",
+      "metadata": "com.adobe.pdf, pages 12"
+    },
+    {
+      "name": "report-v2.pdf",
+      "path": "/Users/example/Downloads/report-v2.pdf",
+      "size": 2417611,
+      "created": "2026-08-18 09:41",
+      "modified": "2026-08-18 09:41",
+      "extension": "pdf",
+      "sha256": "61ab43d8710f...",
+      "text_sha256": "bd8b2b06c927...",
+      "normalized_family": "report",
+      "metadata": "com.adobe.pdf, pages 13"
+    },
+    {
+      "name": "report-final.pdf",
+      "path": "/Users/example/Downloads/report-final.pdf",
+      "size": 2643220,
+      "created": "2026-09-01 16:03",
+      "modified": "2026-09-01 16:03",
+      "extension": "pdf",
+      "sha256": "fd21aa93a90a...",
+      "text_sha256": "4a97621df86f...",
+      "normalized_family": "report",
+      "metadata": "com.adobe.pdf, pages 14"
+    }
+  ],
+  "analysis": {
+    "overall_relation": "VERSION",
+    "confidence": "HIGH",
+    "main_file": "report-final.pdf",
+    "version_order": [
+      "report.pdf",
+      "report-v2.pdf",
+      "report-final.pdf"
+    ],
+    "groups": [
+      {
+        "files": [
+          "report.pdf",
+          "report-v2.pdf",
+          "report-final.pdf"
+        ],
+        "relation": "VERSION",
+        "main_file": "report-final.pdf",
+        "version_order": [
+          "report.pdf",
+          "report-v2.pdf",
+          "report-final.pdf"
+        ],
+        "differences": [
+          "新增第 4 章：实验结果分析",
+          "修改结论部分的表述",
+          "页面从 12 页增加到 14 页"
+        ]
+      }
+    ],
+    "summary": "3 个文件属于同一文档的不同版本，内容存在连续的修改和更新。",
+    "recommendation": "建议将 report-final.pdf 作为主要版本保留，其他版本按需要留作备份或参考。"
+  },
+  "local_evidence": {
+    "relation_signals": [
+      "report.pdf ↔ report-v2.pdf : NORMALIZED_NAME_MATCH, EXTRACTED_TEXT_DIFFERS",
+      "report-v2.pdf ↔ report-final.pdf : NORMALIZED_NAME_MATCH, EXTRACTED_TEXT_DIFFERS"
+    ],
+    "text_differences": [
+      {
+        "file_a": "report.pdf",
+        "file_b": "report-v2.pdf",
+        "status": "DIFFERENT_TEXT",
+        "hunks": 2,
+        "added_lines": 8,
+        "removed_lines": 2,
+        "sample_added": ["4. 实验结果分析", "增加了一组实验结果。"],
+        "sample_removed": ["旧版结论段落"],
+        "samples_truncated": true
+      }
+    ],
+    "text_pair_limit_reached": false,
+    "image_differences": []
+  }
+}
