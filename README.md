@@ -23,6 +23,22 @@ Pass JSON with `--file`, `--json`, or stdin. The app supports English and Simpli
 
 Use `CompareFilesViewer --file /path/to/result.json`, `--json '<payload>'`, or pipe the payload to stdin. The payload contains `files`, `analysis`, and optional `local_evidence`; see `ExamplePayload.json`. The included Shortcut or another producer must compare files and create this payload before launching the viewer.
 
+## Sample inputs
+
+The `Examples` directory contains ready-to-open payloads that exercise common viewer states:
+
+- `versioned-report.json` — two versions of the same PDF report.
+- `exact-copy.json` — two byte-identical PNG files.
+- `mixed-project.json` — document versions plus a related spreadsheet.
+
+For example:
+
+```bash
+swift run CompareFilesViewer --file Examples/mixed-project.json
+```
+
+The example paths are illustrative; the app can still display their metadata and comparison evidence, while **Reveal in Finder** only works after replacing them with paths that exist on your Mac.
+
 ## What it shows
 
 - Overall relationship and confidence, recommended main version, and version order.

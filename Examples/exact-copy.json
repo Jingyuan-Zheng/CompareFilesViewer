@@ -1,0 +1,52 @@
+{
+  "files": [
+    {
+      "name": "brand-logo.png",
+      "path": "/Users/example/Desktop/brand-logo.png",
+      "size": 48219,
+      "created": "2026-08-24 09:00",
+      "modified": "2026-08-24 09:00",
+      "extension": "png",
+      "sha256": "47a83a2d765183be...",
+      "normalized_family": "brand-logo",
+      "metadata": "public.png, 1200 × 1200 px"
+    },
+    {
+      "name": "brand-logo copy.png",
+      "path": "/Users/example/Downloads/brand-logo copy.png",
+      "size": 48219,
+      "created": "2026-09-03 11:31",
+      "modified": "2026-09-03 11:31",
+      "extension": "png",
+      "sha256": "47a83a2d765183be...",
+      "normalized_family": "brand-logo",
+      "metadata": "public.png, 1200 × 1200 px"
+    }
+  ],
+  "analysis": {
+    "overall_relation": "EXACT",
+    "confidence": "HIGH",
+    "main_file": "brand-logo.png",
+    "version_order": [],
+    "groups": [
+      {
+        "files": ["brand-logo.png", "brand-logo copy.png"],
+        "relation": "EXACT",
+        "main_file": "brand-logo.png",
+        "version_order": [],
+        "differences": ["The SHA-256 values match exactly.", "Image dimensions and file sizes are identical."]
+      }
+    ],
+    "summary": "The two PNG files are byte-for-byte identical copies.",
+    "recommendation": "Keep one canonical copy and remove the duplicate if it is no longer needed."
+  },
+  "local_evidence": {
+    "relation_signals": ["brand-logo.png ↔ brand-logo copy.png : SHA256_MATCH, DIMENSIONS_MATCH"],
+    "text_differences": [],
+    "text_pair_limit_reached": false,
+    "image_differences": [
+      {"file_a": "brand-logo.png", "file_b": "brand-logo copy.png", "score": 1.0}
+    ],
+    "image_pair_limit_reached": false
+  }
+}

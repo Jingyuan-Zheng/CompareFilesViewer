@@ -23,6 +23,22 @@ swift build -c release
 
 可使用 `CompareFilesViewer --file /path/to/result.json`、`--json '<payload>'` 或标准输入。数据包含 `files`、`analysis` 和可选的 `local_evidence`；完整示例见 `ExamplePayload.json`。附带快捷指令或其他生产者必须先完成比较并生成数据，再启动查看器。
 
+## 示例输入
+
+`Examples` 目录提供可直接打开的 JSON，用于演示常见的查看器状态：
+
+- `versioned-report.json`：同一 PDF 报告的两个版本。
+- `exact-copy.json`：两个字节完全一致的 PNG 文件。
+- `mixed-project.json`：文档版本加上相关但不同的电子表格。
+
+例如：
+
+```bash
+swift run CompareFilesViewer --file Examples/mixed-project.json
+```
+
+示例中的路径只用于展示；应用仍会显示其元数据和比较证据，但“在 Finder 中显示”仅在改成 Mac 上真实存在的路径后可用。
+
 ## 显示内容
 
 - 总体关系与置信度、推荐主版本和版本顺序。

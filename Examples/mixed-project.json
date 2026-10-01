@@ -1,0 +1,85 @@
+{
+  "files": [
+    {
+      "name": "launch-plan-v1.docx",
+      "path": "/Users/example/Projects/launch-plan-v1.docx",
+      "size": 27840,
+      "created": "2026-09-01 08:30",
+      "modified": "2026-09-01 08:30",
+      "extension": "docx",
+      "sha256": "30c17a6e12af...",
+      "text_sha256": "40e7d1c3f0d2...",
+      "normalized_family": "launch-plan",
+      "metadata": "org.openxmlformats.wordprocessingml.document"
+    },
+    {
+      "name": "launch-plan-v2.docx",
+      "path": "/Users/example/Projects/launch-plan-v2.docx",
+      "size": 29411,
+      "created": "2026-09-08 15:45",
+      "modified": "2026-09-08 15:45",
+      "extension": "docx",
+      "sha256": "cd6b099d40e1...",
+      "text_sha256": "b9c36d809c1a...",
+      "normalized_family": "launch-plan",
+      "metadata": "org.openxmlformats.wordprocessingml.document"
+    },
+    {
+      "name": "launch-budget.xlsx",
+      "path": "/Users/example/Projects/launch-budget.xlsx",
+      "size": 18304,
+      "created": "2026-09-08 16:10",
+      "modified": "2026-09-08 16:10",
+      "extension": "xlsx",
+      "sha256": "81114ba93e61...",
+      "normalized_family": "launch-budget",
+      "metadata": "org.openxmlformats.spreadsheetml.sheet, 3 worksheets"
+    }
+  ],
+  "analysis": {
+    "overall_relation": "MIXED",
+    "confidence": "MEDIUM",
+    "main_file": "launch-plan-v2.docx",
+    "version_order": ["launch-plan-v1.docx", "launch-plan-v2.docx"],
+    "groups": [
+      {
+        "files": ["launch-plan-v1.docx", "launch-plan-v2.docx"],
+        "relation": "VERSION",
+        "main_file": "launch-plan-v2.docx",
+        "version_order": ["launch-plan-v1.docx", "launch-plan-v2.docx"],
+        "differences": ["Updated launch timeline.", "Added the owner for each workstream."]
+      },
+      {
+        "files": ["launch-plan-v2.docx", "launch-budget.xlsx"],
+        "relation": "SAME_PROJECT",
+        "main_file": null,
+        "version_order": [],
+        "differences": ["Both files refer to the autumn product launch.", "They serve different purposes and should be retained together."]
+      }
+    ],
+    "summary": "The documents include two versions of a launch plan and a related, but distinct, budget workbook.",
+    "recommendation": "Use launch-plan-v2.docx as the plan, archive v1, and keep launch-budget.xlsx with the project materials."
+  },
+  "local_evidence": {
+    "relation_signals": [
+      "launch-plan-v1.docx ↔ launch-plan-v2.docx : NORMALIZED_NAME_MATCH, EXTRACTED_TEXT_DIFFERS",
+      "launch-plan-v2.docx ↔ launch-budget.xlsx : PROJECT_KEYWORD_MATCH"
+    ],
+    "text_differences": [
+      {
+        "file_a": "launch-plan-v1.docx",
+        "file_b": "launch-plan-v2.docx",
+        "status": "DIFFERENT_TEXT",
+        "hunks": 2,
+        "added_lines": 10,
+        "removed_lines": 3,
+        "sample_added": ["Workstream owners", "Launch timeline: 14 October"],
+        "sample_removed": ["Tentative release date"],
+        "samples_truncated": false
+      }
+    ],
+    "text_pair_limit_reached": false,
+    "image_differences": [],
+    "image_pair_limit_reached": false
+  }
+}
