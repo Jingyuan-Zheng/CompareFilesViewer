@@ -52,16 +52,16 @@ struct SampleData {
                     mainFile: "report-final.pdf",
                     versionOrder: ["report.pdf", "report-v2.pdf", "report-final.pdf"],
                     differences: [
-                        "新增第 4 章：实验结果分析",
-                        "修改结论部分的表述",
-                        "页面从 12 页增加到 14 页",
-                        "新增 2 张图表",
-                        "删除旧版附录 A"
+                        "Added Chapter 4: Experimental Results Analysis",
+                        "Revised the conclusion wording",
+                        "Expanded from 12 to 14 pages",
+                        "Added two charts",
+                        "Removed the old Appendix A"
                     ]
                 )
             ],
-            summary: "3 个文件属于同一文档的不同版本，内容存在连续的修改和更新。",
-            recommendation: "建议将 report-final.pdf 作为主要版本保留，其他版本按需要留作备份或参考。"
+            summary: "The three files are successive versions of the same document, with continuous revisions and updates.",
+            recommendation: "Keep report-final.pdf as the main version and retain the others as backups or reference copies as needed."
         ),
         localEvidence: LocalEvidence(
             relationSignals: [
@@ -76,8 +76,8 @@ struct SampleData {
                     hunks: 2,
                     addedLines: 8,
                     removedLines: 2,
-                    sampleAdded: ["4. 实验结果分析", "增加了一组实验结果。"],
-                    sampleRemoved: ["旧版结论段落"],
+                    sampleAdded: ["4. Experimental Results Analysis", "Added a set of experimental results."],
+                    sampleRemoved: ["Previous conclusion paragraph"],
                     samplesTruncated: true
                 ),
                 TextDifference(
@@ -87,8 +87,8 @@ struct SampleData {
                     hunks: 1,
                     addedLines: 3,
                     removedLines: 1,
-                    sampleAdded: ["最终结论经过修订。"],
-                    sampleRemoved: ["初步结论。"]
+                    sampleAdded: ["The final conclusion was revised."],
+                    sampleRemoved: ["Preliminary conclusion."]
                 )
             ],
             imageDifferences: []

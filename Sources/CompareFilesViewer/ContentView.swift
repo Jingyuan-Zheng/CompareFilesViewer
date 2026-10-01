@@ -61,7 +61,7 @@ struct ContentView: View {
 
         for (index, group) in analysis.groups.enumerated() {
             for difference in group.differences {
-                let labeled = "文件组 \(index + 1)：\(difference)"
+                let labeled = L10n.ui("File Group %d: %@", index + 1, difference)
                 if seen.insert(labeled).inserted {
                     result.append(labeled)
                 }
@@ -91,14 +91,14 @@ struct ContentView: View {
 
                     textCard(
                         symbol: "text.alignleft",
-                        title: L10n.ui("总结"),
-                        text: analysis.summary.isEmpty ? L10n.ui("暂无总结。") : analysis.summary
+                        title: L10n.ui("Summary"),
+                        text: analysis.summary.isEmpty ? L10n.ui("No summary available.") : analysis.summary
                     )
 
                     textCard(
                         symbol: "lightbulb",
-                        title: L10n.ui("建议"),
-                        text: analysis.recommendation.isEmpty ? L10n.ui("暂无建议。") : analysis.recommendation
+                        title: L10n.ui("Recommendation"),
+                        text: analysis.recommendation.isEmpty ? L10n.ui("No recommendation available.") : analysis.recommendation
                     )
                 }
                 .padding(.horizontal, 16)
@@ -133,7 +133,7 @@ struct ContentView: View {
                 Text(analysis.overallRelation.title)
                     .font(.system(size: 27, weight: .bold, design: .rounded))
 
-                Text("\(payload.fileCount) 个文件 · \(payload.groupCount) 个文件组")
+                Text(L10n.ui("%d files · %d groups", payload.fileCount, payload.groupCount))
                     .font(.system(size: 13))
                     .foregroundStyle(.secondary)
             }
@@ -149,7 +149,7 @@ struct ContentView: View {
     private var mainFileCard: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 11) {
-                SectionTitle(symbol: "crown", title: L10n.ui("推荐主版本"))
+                SectionTitle(symbol: "crown", title: L10n.ui("Recommended Main Version"))
 
                 if let name = analysis.mainFile {
                     HStack(spacing: 12) {
@@ -175,7 +175,7 @@ struct ContentView: View {
                             Button {
                                 revealInFinder(mainFileInfo)
                             } label: {
-                                Label(L10n.ui("在访达中显示"), systemImage: "folder")
+                                Label(L10n.ui("Show in Finder"), systemImage: "folder")
                             }
                             .buttonStyle(.bordered)
                         }
@@ -188,7 +188,7 @@ struct ContentView: View {
                             .foregroundStyle(.secondary)
                             .frame(width: 34)
 
-                        Text(L10n.ui("暂无法可靠确定"))
+                        Text(L10n.ui("Unable to determine reliably"))
                             .font(.system(size: 14, weight: .medium))
                             .foregroundStyle(.secondary)
 
@@ -204,7 +204,7 @@ struct ContentView: View {
             VStack(alignment: .leading, spacing: 12) {
                 SectionTitle(
                     symbol: usesVersionOrder ? "clock.arrow.circlepath" : "doc.on.doc",
-                    title: usesVersionOrder ? L10n.ui("版本顺序（从旧到新）") : L10n.ui("文件")
+                    title: usesVersionOrder ? L10n.ui("Version Order (oldest to newest)") : L10n.ui("Files")
                 )
 
                 VStack(spacing: 0) {
@@ -262,7 +262,7 @@ struct ContentView: View {
             Spacer()
 
             if isMain {
-                Text(L10n.ui("主版本"))
+                Text(L10n.ui("Main Version"))
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(Color.accentColor)
                     .padding(.horizontal, 8)
@@ -276,7 +276,7 @@ struct ContentView: View {
                 Button {
                     revealInFinder(info)
                 } label: {
-                    Label(L10n.ui("在访达中显示"), systemImage: "folder")
+                    Label(L10n.ui("Show in Finder"), systemImage: "folder")
                 }
             }
         }
@@ -285,7 +285,7 @@ struct ContentView: View {
     private var differencesCard: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 11) {
-                SectionTitle(symbol: "list.bullet.rectangle", title: L10n.ui("主要差异"))
+                SectionTitle(symbol: "list.bullet.rectangle", title: L10n.ui("Key Differences"))
 
                 VStack(alignment: .leading, spacing: 8) {
                     ForEach(differences, id: \.self) { difference in
@@ -323,13 +323,13 @@ struct ContentView: View {
             Button {
                 showingDetails = true
             } label: {
-                Label(L10n.ui("查看详细信息…"), systemImage: "info.circle")
+                Label(L10n.ui("View Details…"), systemImage: "info.circle")
             }
             .buttonStyle(.bordered)
 
             Spacer()
 
-            Button(L10n.ui("完成")) {
+            Button(L10n.ui("Done")) {
                 NSApp.keyWindow?.performClose(nil)
             }
             .buttonStyle(.borderedProminent)

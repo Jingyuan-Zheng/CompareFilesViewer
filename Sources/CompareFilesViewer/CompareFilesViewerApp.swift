@@ -20,12 +20,12 @@ struct CompareFilesViewerApp: App {
     @StateObject private var store = AppStore()
 
     var body: some Scene {
-        WindowGroup("Compare Files") {
+        WindowGroup(L10n.ui("Compare Files")) {
             Group {
                 if let payload = store.payload {
                     ContentView(payload: payload)
                 } else {
-                    ErrorView(message: store.errorMessage ?? L10n.ui("没有收到可显示的数据。"))
+                    ErrorView(message: store.errorMessage ?? L10n.ui("No displayable data was received."))
                 }
             }
         }

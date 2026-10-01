@@ -60,7 +60,7 @@ struct ConfidenceBadge: View {
         .padding(.horizontal, 10)
         .padding(.vertical, 7)
         .background(tint.opacity(0.13), in: Capsule())
-        .accessibilityLabel("置信度 \(confidence.title)")
+        .accessibilityLabel(L10n.ui("Confidence: %@", confidence.title))
     }
 }
 

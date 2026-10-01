@@ -14,9 +14,9 @@ struct DetailsView: View {
             VStack(spacing: 0) {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("详细信息")
+                        Text(L10n.ui("Details"))
                             .font(.system(size: 20, weight: .bold))
-                        Text("AI 分组与本地证据")
+                        Text(L10n.ui("AI groups and local evidence"))
                             .font(.system(size: 12))
                             .foregroundStyle(.secondary)
                     }
@@ -72,12 +72,12 @@ struct DetailsView: View {
                 GlassCard {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            SectionTitle(symbol: "square.stack.3d.up", title: "文件组 \(index + 1)")
+                            SectionTitle(symbol: "square.stack.3d.up", title: L10n.ui("File Group %d", index + 1))
                             RelationBadge(relation: group.relation)
                         }
 
                         VStack(alignment: .leading, spacing: 7) {
-                            Text("文件")
+                            Text(L10n.ui("Files"))
                                 .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(.secondary)
 
@@ -89,13 +89,13 @@ struct DetailsView: View {
                         Divider()
 
                         detailRow(
-                            "推荐主版本",
-                            group.mainFile ?? "暂无法可靠确定"
+                            L10n.ui("Recommended Main Version"),
+                            group.mainFile ?? L10n.ui("Unable to determine reliably")
                         )
 
                         if !group.versionOrder.isEmpty {
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("版本顺序")
+                                Text(L10n.ui("Version Order"))
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundStyle(.secondary)
 
@@ -117,7 +117,7 @@ struct DetailsView: View {
 
                         if !group.differences.isEmpty {
                             VStack(alignment: .leading, spacing: 6) {
-                                Text("主要差异")
+                                Text(L10n.ui("Key Differences"))
                                     .font(.system(size: 12, weight: .semibold))
                                     .foregroundStyle(.secondary)
 
@@ -153,7 +153,7 @@ struct DetailsView: View {
             Spacer()
 
             if isMain {
-                Text("主版本")
+                Text(L10n.ui("Main Version"))
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(Color.accentColor)
                     .padding(.horizontal, 7)
@@ -166,7 +166,7 @@ struct DetailsView: View {
     private var localFilesSection: some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                SectionTitle(symbol: "internaldrive", title: "本地文件信息")
+                SectionTitle(symbol: "internaldrive", title: L10n.ui("Local File Information"))
 
                 ForEach(Array(payload.files.enumerated()), id: \.offset) { index, file in
                     VStack(alignment: .leading, spacing: 8) {
@@ -194,30 +194,30 @@ struct DetailsView: View {
                                     Image(systemName: "folder")
                                 }
                                 .buttonStyle(.borderless)
-                                .help("在访达中显示")
+                                .help(L10n.ui("Show in Finder"))
                             }
                         }
 
                         if let path = file.displayPath {
-                            metadataRow("路径", path)
+                            metadataRow(L10n.ui("Path"), path)
                         }
                         if let created = file.created {
-                            metadataRow("创建时间", created)
+                            metadataRow(L10n.ui("Created"), created)
                         }
                         if let modified = file.modified {
-                            metadataRow("修改时间", modified)
+                            metadataRow(L10n.ui("Modified"), modified)
                         }
                         if let metadata = file.metadata {
-                            metadataRow("Metadata", metadata)
+                            metadataRow(L10n.ui("Metadata"), metadata)
                         }
                         if let family = file.normalizedFamily {
-                            metadataRow("文件族", family)
+                            metadataRow(L10n.ui("File Family"), family)
                         }
                         if let sha = file.sha256 {
                             metadataRow("SHA-256", sha, monospaced: true)
                         }
                         if let textSha = file.textSha256 {
-                            metadataRow("文本 SHA-256", textSha, monospaced: true)
+                            metadataRow(L10n.ui("Text SHA-256"), textSha, monospaced: true)
                         }
                     }
 
@@ -235,7 +235,7 @@ struct DetailsView: View {
             if !evidence.relationSignals.isEmpty {
                 GlassCard {
                     VStack(alignment: .leading, spacing: 10) {
-                        SectionTitle(symbol: "checklist", title: "本地关系证据")
+                        SectionTitle(symbol: "checklist", title: L10n.ui("Local relationship evidence"))
 
                         ForEach(evidence.relationSignals, id: \.self) { signal in
                             Text(signal)
@@ -260,7 +260,7 @@ struct DetailsView: View {
     private func textDifferencesSection(_ evidence: LocalEvidence) -> some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 12) {
-                SectionTitle(symbol: "doc.text.magnifyingglass", title: "文本差异")
+                SectionTitle(symbol: "doc.text.magnifyingglass", title: L10n.ui("Text Differences"))
 
                 ForEach(Array(evidence.textDifferences.enumerated()), id: \.offset) { index, item in
                     VStack(alignment: .leading, spacing: 8) {
@@ -281,9 +281,9 @@ struct DetailsView: View {
 
                         if item.status == "DIFFERENT_TEXT" {
                             let pieces = [
-                                item.addedLines.map { "新增 \($0) 行" },
-                                item.removedLines.map { "删除 \($0) 行" },
-                                item.hunks.map { "\($0) 个差异区域" }
+                                item.addedLines.map { L10n.ui("%d lines added", $0) },
+                                item.removedLines.map { L10n.ui("%d lines removed", $0) },
+                                item.hunks.map { L10n.ui("%d difference regions", $0) }
                             ]
                             .compactMap { $0 }
 
@@ -294,15 +294,15 @@ struct DetailsView: View {
                             }
 
                             if !item.sampleAdded.isEmpty {
-                                sampleLines(title: "新增样本", symbol: "plus.circle", lines: item.sampleAdded)
+                                sampleLines(title: L10n.ui("Added samples"), symbol: "plus.circle", lines: item.sampleAdded)
                             }
 
                             if !item.sampleRemoved.isEmpty {
-                                sampleLines(title: "删除样本", symbol: "minus.circle", lines: item.sampleRemoved)
+                                sampleLines(title: L10n.ui("Removed samples"), symbol: "minus.circle", lines: item.sampleRemoved)
                             }
 
                             if item.samplesTruncated {
-                                Label("这里只显示部分差异样本。", systemImage: "ellipsis.circle")
+                                Label(L10n.ui("Only some difference samples are shown."), systemImage: "ellipsis.circle")
                                     .font(.system(size: 10))
                                     .foregroundStyle(.secondary)
                             }
@@ -315,7 +315,7 @@ struct DetailsView: View {
                 }
 
                 if evidence.textPairLimitReached {
-                    Label("文件较多，并非所有文本组合都进行了差异比较。", systemImage: "exclamationmark.circle")
+                    Label(L10n.ui("There are many files, so not every text pair was compared."), systemImage: "exclamationmark.circle")
                         .font(.system(size: 11))
                         .foregroundStyle(.secondary)
                 }
@@ -326,7 +326,7 @@ struct DetailsView: View {
     private func imageDifferencesSection(_ evidence: LocalEvidence) -> some View {
         GlassCard {
             VStack(alignment: .leading, spacing: 10) {
-                SectionTitle(symbol: "photo.on.rectangle.angled", title: "图片差异")
+                SectionTitle(symbol: "photo.on.rectangle.angled", title: L10n.ui("Image Differences"))
 
                 ForEach(evidence.imageDifferences) { item in
                     HStack {
@@ -336,14 +336,14 @@ struct DetailsView: View {
 
                         Spacer()
 
-                        Text(item.score.map { String(format: "%.5f", $0) } ?? "不可用")
+                        Text(item.score.map { String(format: "%.5f", $0) } ?? L10n.ui("Unavailable"))
                             .font(.system(size: 11, design: .monospaced))
                             .foregroundStyle(.secondary)
                     }
                 }
 
                 if evidence.imagePairLimitReached {
-                    Label("文件较多，并非所有图片组合都进行了像素比较。", systemImage: "exclamationmark.circle")
+                    Label(L10n.ui("There are many files, so not every image pair was compared pixel by pixel."), systemImage: "exclamationmark.circle")
                         .font(.system(size: 11))
                         .foregroundStyle(.secondary)
                 }

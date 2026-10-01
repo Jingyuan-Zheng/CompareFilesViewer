@@ -54,7 +54,7 @@ enum InputError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidJSON:
-            return "无法解析 Compare Files JSON。请传入固定 AI JSON，或包含 files / analysis 的完整 payload。"
+            return L10n.ui("Unable to parse Compare Files JSON. Provide the expected AI JSON or a complete payload containing files and analysis.")
         }
     }
 }
