@@ -12,6 +12,13 @@ swift build -c release
 
 通过 `--file`、`--json` 或标准输入传入 JSON。应用支持英文和简体中文。
 
+## 使用方法
+
+1. 运行 `swift build -c release`，将可执行文件或 App 放到快捷指令可调用的位置。
+2. 导入 `Compare Files.shortcut`，让它生成结果 JSON。
+3. 运行 `CompareFilesViewer --file /path/to/result.json`。
+4. 查看主版本、证据和“详细信息”，并使用“在 Finder 中显示”核对原文件。
+
 ## 输入与流程
 
 可使用 `CompareFilesViewer --file /path/to/result.json`、`--json '<payload>'` 或标准输入。数据包含 `files`、`analysis` 和可选的 `local_evidence`；完整示例见 `ExamplePayload.json`。附带快捷指令或其他生产者必须先完成比较并生成数据，再启动查看器。
