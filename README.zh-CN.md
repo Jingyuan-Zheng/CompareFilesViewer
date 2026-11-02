@@ -48,3 +48,13 @@ swift run CompareFilesViewer --file Examples/mixed-project.json
 ## 要求与隐私
 
 构建需要 macOS 26 及以上和 Xcode Command Line Tools。应用不发起网络请求，也不上传文件；AI 或比较策略由生成数据的快捷指令决定。
+
+## 界面截图
+
+主窗口：完全相同的文件报告与 Liquid Glass 操作栏。
+
+![Compare Files main window](docs/images/liquid-glass-main.png)
+
+详情窗口：文件分组和本地比较依据。
+
+![Compare Files details](docs/images/liquid-glass-details.png)

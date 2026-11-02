@@ -48,3 +48,13 @@ The example paths are illustrative; the app can still display their metadata and
 ## Requirements and privacy
 
 Requires macOS 26 or later and Xcode Command Line Tools to build. It performs no network request and does not upload selected files; any AI or comparison policy belongs to the producer Shortcut.
+
+## Screenshots
+
+Main window showing an exact-match report with Liquid Glass controls.
+
+![Compare Files main window](docs/images/liquid-glass-main.png)
+
+Details sheet showing file groups and local evidence.
+
+![Compare Files details](docs/images/liquid-glass-details.png)
