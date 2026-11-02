@@ -4,20 +4,19 @@
 
 原生 macOS SwiftUI 查看器，用于展示快捷指令或其他工具生成的文件比较结果。它显示关系、版本顺序、元数据、证据和 Finder 操作；不自行比较文件。
 
-## 构建
+## 安装与使用
 
-```bash
-swift build -c release
-```
+需要 macOS 26 或更新版本、支持该 SDK 的 Xcode/Command Line Tools，以及已配置的快捷指令“使用模型”动作（默认 ChatGPT）。
 
-通过 `--file`、`--json` 或标准输入传入 JSON。应用支持英文和简体中文。
+1. 克隆或下载仓库，在项目根目录运行 `bash scripts/build-app.sh`。
+2. 创建 `~/Applications` 文件夹，将 `.build/CompareFilesViewer.app` 复制到该目录。也支持安装到 `/Applications`，无需填写个人用户名。
+3. 下载根目录的 [Compare Files.shortcut](Compare%20Files.shortcut)，双击导入“快捷指令”。同名快捷指令已存在时，请先在“快捷指令”中手动移除旧版，再导入新版。
+4. 在“快捷指令”的设置中允许运行脚本，检查“使用模型”动作所选模型及账户是否可用。默认输出语言在 `Language` 文本动作中设置为 English，可改为 Simplified Chinese。
+5. 在 Finder 中选中至少两个文件，右键 → 快速操作 → Compare Files；若菜单中没有显示，请在系统设置中启用对应快捷操作。
 
-## 使用方法
+字节完全相同的文件由本地直接判断；其他文件将把本地 JSON 交给所选模型，再显示结果。模型输入含文件名、路径、元数据、文本节选和比较依据；请根据所选服务的数据处理方式决定是否使用。
 
-1. 运行 `swift build -c release`，将可执行文件或 App 放到快捷指令可调用的位置。
-2. 导入 `Compare Files.shortcut`，让它生成结果 JSON。
-3. 运行 `CompareFilesViewer --file /path/to/result.json`。
-4. 查看主版本、证据和“详细信息”，并使用“在 Finder 中显示”核对原文件。
+完整配置、两段关键脚本及 AI prompt 见[博客使用指南](https://jingyuan-zheng.github.io/zh/p/compare-files-viewer/)。README 不重复脚本和 prompt。
 
 ## 输入与流程
 

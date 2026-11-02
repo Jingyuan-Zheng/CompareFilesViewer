@@ -4,20 +4,19 @@
 
 A native macOS SwiftUI viewer for file-comparison results produced by a Shortcut or another tool. It displays relationships, version order, metadata, evidence, and Finder actions; it does not compare files itself.
 
-## Build
+## Install and use
 
-```bash
-swift build -c release
-```
+Requires macOS 26 or later, Xcode/Command Line Tools with a compatible SDK, and a configured Shortcuts **Use Model** action (ChatGPT by default).
 
-Pass JSON with `--file`, `--json`, or stdin. The app supports English and Simplified Chinese.
+1. Clone or download the repository and run `bash scripts/build-app.sh` from its root.
+2. Create `~/Applications` and copy `.build/CompareFilesViewer.app` into it. Installation in `/Applications` is also supported; no personal username is needed.
+3. Download [Compare Files.shortcut](Compare%20Files.shortcut) from the repository root and double-click to import it. If a shortcut with that name already exists, manually remove the old copy in Shortcuts before importing the update.
+4. Allow running scripts in Shortcuts settings and check that the **Use Model** action has an available model/account. The `Language` Text action defaults to English; change it to Simplified Chinese if preferred.
+5. Select at least two files in Finder, then choose **Quick Actions → Compare Files** from the context menu. Enable the corresponding Quick Action in System Settings if it is missing.
 
-## Use
+Byte-identical files are handled locally. Other files send the local JSON to the selected model before displaying the report. Model input includes names, paths, metadata, text excerpts, and comparison evidence; consider your selected service's data handling before use.
 
-1. Build with `swift build -c release` and place the executable or app bundle where your Shortcut can run it.
-2. Import `Compare Files.shortcut` and configure it to create a result JSON payload.
-3. Launch `CompareFilesViewer --file /path/to/result.json`.
-4. Review the main version, evidence, and Details sheet; use Reveal in Finder to inspect the referenced files.
+Read the [blog setup guide](https://jingyuan-zheng.github.io/p/compare-files-viewer/) for configuration, both key scripts, and the AI prompt. They are not duplicated in this README.
 
 ## Input and workflow
 
