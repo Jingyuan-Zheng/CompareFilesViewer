@@ -47,4 +47,4 @@ The example paths are illustrative; the app can still display their metadata and
 
 ## Requirements and privacy
 
-Requires macOS 14 or later and Xcode Command Line Tools to build. It performs no network request and does not upload selected files; any AI or comparison policy belongs to the producer Shortcut.
+Requires macOS 26 or later and Xcode Command Line Tools to build. It performs no network request and does not upload selected files; any AI or comparison policy belongs to the producer Shortcut.

@@ -5,7 +5,7 @@ let package = Package(
     name: "CompareFilesViewer",
     defaultLocalization: "en",
     platforms: [
-        .macOS(.v14)
+        .macOS("26.0")
     ],
     products: [
         .executable(name: "CompareFilesViewer", targets: ["CompareFilesViewer"])

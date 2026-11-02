@@ -319,28 +319,27 @@ struct ContentView: View {
     }
 
     private var bottomBar: some View {
-        HStack {
-            Button {
-                showingDetails = true
-            } label: {
-                Label(L10n.ui("View Details…"), systemImage: "info.circle")
-            }
-            .buttonStyle(.bordered)
+        GlassEffectContainer(spacing: 16) {
+            HStack {
+                Button { showingDetails = true } label: {
+                    Label(L10n.ui("View Details…"), systemImage: "info.circle")
+                }
+                .buttonStyle(.glass)
 
-            Spacer()
+                Spacer()
 
-            Button(L10n.ui("Done")) {
-                NSApp.keyWindow?.performClose(nil)
+                Button(L10n.ui("Done")) {
+                    NSApp.keyWindow?.performClose(nil)
+                }
+                .buttonStyle(.glassProminent)
+                .keyboardShortcut(.defaultAction)
             }
-            .buttonStyle(.borderedProminent)
-            .keyboardShortcut(.defaultAction)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .background(.ultraThinMaterial)
-        .overlay(alignment: .top) {
-            Divider()
-        }
+        .padding(.horizontal, 12)
+        .padding(.bottom, 10)
     }
 
     private func revealInFinder(_ file: LocalFileInfo?) {
